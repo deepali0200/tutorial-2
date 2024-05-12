@@ -74,9 +74,9 @@ app.post('/districts/', async (request, response) => {
   const {districtName, stateId, cases, cured, active, deaths} = details
   const api3 = `
     INSERT INTO
-      district (districtName,stateId,cases,cured,active,deaths)
+      district (district_name,state_id,cases,cured,active,deaths)
     VALUES(
-        '${directorId}',
+        '${districtId}',
         '${stateId}',
         '${cases}',
         '${cured}',
@@ -84,7 +84,7 @@ app.post('/districts/', async (request, response) => {
         '${deaths}'
       );`
 
-  const db1 = await db.run(api2)
+  const db1 = await db.run(api3)
   const newDistrictDetails = db1.lastID
   response.send('District Successfully Added')
 })
